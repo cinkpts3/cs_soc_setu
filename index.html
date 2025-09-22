@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SETU Waterford Computer Science Society</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #000000;
+            color: #00ff00;
+            font-family: 'Courier New', monospace;
+            font-size: 16px;
+            line-height: 1.4;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            width: 100vw;
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .container {
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            border-bottom: 2px solid #00ff00;
+            padding-bottom: 20px;
+            width: 100%;
+            max-width: 800px;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 0 0 10px #00ff00;
+        }
+
+        .header p {
+            font-size: 1.2em;
+            opacity: 0.8;
+        }
+
+        .terminal {
+            background-color: #000000;
+            border: 2px solid #00ff00;
+            border-radius: 5px;
+            padding: 20px;
+            margin: 20px 0;
+            box-shadow: 0 0 20px rgba(0, 255, 0, 0.3);
+            width: 100%;
+            max-width: 800px;
+        }
+
+        .command-line {
+            margin: 10px 0;
+
+        }
+
+        .prompt {
+            color: #00ff00;
+            font-weight: bold;
+        }
+
+        .command {
+            color: #ffffff;
+            white-space: pre;
+        }
+
+        .link {
+            color: #00ff00;
+            text-decoration: underline;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .link:hover {
+            color: #ffffff;
+            text-shadow: 0 0 5px #00ff00;
+        }
+
+        a.link {
+            text-decoration: none;
+        }
+
+        a.link:hover {
+            text-decoration: underline;
+        }
+
+        .cursor {
+            display: inline-block;
+            animation: blink 1s infinite;
+            color: #00ff00;
+        }
+
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
+        }
+
+
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #00ff00;
+            opacity: 0.7;
+            width: 100%;
+            max-width: 800px;
+        }
+
+        @media screen and (max-width: 768px) {
+            body {
+                font-size: 14px;
+            }
+
+            .container {
+                padding: 10px;
+                height: 100vh;
+            }
+
+            .header h1 {
+                font-size: 1.8em;
+            }
+
+            .header p {
+                font-size: 1em;
+            }
+
+            .terminal {
+                padding: 15px;
+                margin: 10px 0;
+            }
+
+            .command-line {
+                margin: 8px 0;
+                word-wrap: break-word;
+                overflow-wrap: break-word;
+            }
+
+            .prompt {
+                font-size: 0.9em;
+            }
+
+            .command {
+                font-size: 0.9em;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            body {
+                font-size: 12px;
+            }
+
+            .container {
+                padding: 5px;
+            }
+
+            .header h1 {
+                font-size: 1.5em;
+            }
+
+            .header p {
+                font-size: 0.9em;
+            }
+
+            .terminal {
+                padding: 10px;
+                margin: 5px 0;
+            }
+
+            .command-line {
+                margin: 5px 0;
+            }
+
+            .prompt {
+                font-size: 0.8em;
+            }
+
+            .command {
+                font-size: 0.8em;
+            }
+        }
+
+        .glitch {
+            animation: glitch 2s infinite;
+        }
+
+        @keyframes glitch {
+            0%, 100% { transform: translate(0); }
+            20% { transform: translate(-2px, 2px); }
+            40% { transform: translate(-2px, -2px); }
+            60% { transform: translate(2px, 2px); }
+            80% { transform: translate(2px, -2px); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>SETU WATERFORD</h1>
+            <p>COMPUTER SCIENCE SOCIETY</p>
+        </div>
+
+        <div class="terminal">
+            <div class="command-line">
+                <span class="prompt">compsci@setu:~$</span> <span class="command">cd SETU_CS_SOC</span>
+            </div>
+            <div class="command-line">
+                <span class="prompt">compsci@setu:~$</span> <span class="command">sudo join SETU_CS_SOC --force</span>
+            </div>
+            <div class="command-line">
+                <span class="prompt">compsci@setu:~$</span> <a href="https://discord.gg/uMBpAXfkvY" class="command link">click here to join</a>
+            </div>
+        </div>
+
+
+        <div class="footer">
+            <p>Made with <3 SETU Waterford CS Society</p>
+        </div>
+    </div>
+
+    <script>
+        function typeEffect(element, text, speed, callback) {
+            let i = 0;
+            function typing() {
+                if (i < text.length) {
+                    element.innerHTML += text.charAt(i);
+                    i++;
+                    setTimeout(typing, speed + Math.random() * 100);
+                } else if (callback) {
+                    callback();
+                }
+            }
+            typing();
+        }
+
+        document.addEventListener("DOMContentLoaded", function() {
+            const commandLines = document.querySelectorAll(".command-line");
+            let delay = 500; 
+
+            commandLines.forEach((line, index) => {
+                const prompt = line.querySelector(".prompt");
+                const command = line.querySelector(".command");
+                
+                if (command) {
+                    const text = command.textContent;
+                    command.textContent = ""; 
+                    prompt.style.opacity = "0"; 
+
+                    setTimeout(() => {
+                        prompt.style.opacity = "1";
+                        
+                        setTimeout(() => {
+                            typeEffect(command, text, 50, () => {
+                                if (index === commandLines.length - 1) {
+                                    command.insertAdjacentHTML("beforeend", '<span class="cursor">_</span>');
+                                }
+                            });
+                        }, 200); 
+                    }, delay);
+
+                    delay += text.length * 80 + 1000; 
+                }
+            });
+        });
+
+    </script>
+</body>
+</html>
