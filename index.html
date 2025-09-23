@@ -257,40 +257,35 @@
 
         document.addEventListener("DOMContentLoaded", function() {
             const commandLines = document.querySelectorAll(".command-line");
-            let delay = 500; 
+            let delay = 200; 
 
             commandLines.forEach((line, index) => {
                 const prompt = line.querySelector(".prompt");
                 const command = line.querySelector(".command");
                 
-                if (command) {
+                if (command && prompt) {
                     const text = command.textContent;
                     command.textContent = ""; 
-                    
-                    if (prompt) {
-                        prompt.style.opacity = "0"; 
-                    }
+                    prompt.style.opacity = "0"; 
 
                     setTimeout(() => {
-                        if (prompt) {
-                            prompt.style.opacity = "1";
-                        }
+                        prompt.style.opacity = "1";
                         
                         setTimeout(() => {
-                            typeEffect(command, text, 50, () => {
+                            typeEffect(command, text, 20, () => {
                                 if (index === commandLines.length - 1) {
                                     command.insertAdjacentHTML("beforeend", '<span class="cursor">_</span>');
                                 }
                             });
-                        }, 200); 
+                        }, 100); 
                     }, delay);
 
-                    delay += text.length * 80 + 1000; 
+                    delay += (text.length * 80) + 1000; 
                 }
             });
         });
 
     </script>
 </body>
-</html>  
-<!--finnished? join the society!-->
+</html>
+<!--finnished? now join the society!-->
