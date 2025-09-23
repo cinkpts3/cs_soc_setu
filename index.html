@@ -33,17 +33,15 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            padding: 20px;
+            padding: 0;
             box-sizing: border-box;
         }
 
         .header {
             text-align: center;
-            margin-bottom: 40px;
-            border-bottom: 2px solid #00ff00;
+            margin-top: 30px;
             padding-bottom: 20px;
             width: 100%;
-            max-width: 800px;
         }
 
         .header h1 {
@@ -60,12 +58,17 @@
         .terminal {
             background-color: #000000;
             border: 2px solid #00ff00;
-            border-radius: 5px;
-            padding: 20px;
-            margin: 20px 0;
-            box-shadow: 0 0 20px rgba(0, 255, 0, 0.3);
-            width: 100%;
-            max-width: 800px;
+            box-shadow: 0 0 20px #00ff00;
+            border-radius: 10px;
+            padding: 40px;
+            margin: 50px;
+            width: calc(100% - 100px);
+            height: calc(100vh - 100px);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: flex-start;
+            box-sizing: border-box; 
         }
 
         .command-line {
@@ -117,12 +120,10 @@
 
         .footer {
             text-align: center;
-            margin-top: 40px;
+            margin-bottom: 20px;    
             padding-top: 20px;
-            border-top: 1px solid #00ff00;
             opacity: 0.7;
             width: 100%;
-            max-width: 800px;
         }
 
         @media screen and (max-width: 768px) {
@@ -131,8 +132,7 @@
             }
 
             .container {
-                padding: 10px;
-                height: 100vh;
+                padding: 0;
             }
 
             .header h1 {
@@ -144,8 +144,7 @@
             }
 
             .terminal {
-                padding: 15px;
-                margin: 10px 0;
+                padding: 20px;
             }
 
             .command-line {
@@ -169,7 +168,7 @@
             }
 
             .container {
-                padding: 5px;
+                padding: 0;
             }
 
             .header h1 {
@@ -181,8 +180,7 @@
             }
 
             .terminal {
-                padding: 10px;
-                margin: 5px 0;
+                padding: 15px;
             }
 
             .command-line {
@@ -223,19 +221,19 @@
                 <span class="prompt">compsci@setu:~$</span> <span class="command">cd SETU_CS_SOC</span>
             </div>
             <div class="command-line">
-                <span class="prompt">compsci@setu:~$</span> <span class="command">sudo join SETU_CS_SOC --force</span>
+                <span class="prompt">compsci@setu:~/SETU_CS_SOC$</span> <span class="command">sudo join SETU_CS_SOC --force</span>
             </div>
             <div class="command-line">
-                <span class="prompt">compsci@setu:~$</span> <a href="https://discord.gg/uMBpAXfkvY" class="command link">click here to join</a>
+               <span class="prompt">compsci@setu:~/SETU_CS_SOC$</span> <a href="https://discord.gg/uMBpAXfkvY" class="command link">click here to join</a>
             </div>
         </div>
 
 
         <div class="footer">
-            <p>Made with <3 SETU Waterford CS Society</p>
+            <p>Made with <3 SETU Waterford CS Society</p>   
         </div>
     </div>
-
+    
     <script>
         function typeEffect(element, text, speed, callback) {
             let i = 0;
@@ -262,10 +260,15 @@
                 if (command) {
                     const text = command.textContent;
                     command.textContent = ""; 
-                    prompt.style.opacity = "0"; 
+                    
+                    if (prompt) {
+                        prompt.style.opacity = "0"; 
+                    }
 
                     setTimeout(() => {
-                        prompt.style.opacity = "1";
+                        if (prompt) {
+                            prompt.style.opacity = "1";
+                        }
                         
                         setTimeout(() => {
                             typeEffect(command, text, 50, () => {
